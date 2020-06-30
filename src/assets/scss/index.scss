@@ -1,0 +1,10 @@
+@import './base.scss';
+// @import './mobile.scss';
+
+body {
+    background: url('../images/example/mail-bg.png?v/* @echo RELEASE_TAG */')
+}
+
+h1 {
+    transform: scale(1.2);
+}

@@ -1,0 +1,39 @@
+@import './base.scss';
+// @import './mobile.scss';
+@import './example-sprite.scss';
+
+.example-content {
+    text-align: center;
+    h1 {
+        font-size: 30px;
+        color: pink;
+        @include background('../images/example/mail-bg.png' + $tag)
+    }
+    section {
+        li {
+            margin-top: 30px;
+            span {
+                @include wh(30,30);
+            }
+            &:after {
+                content:'';
+                display: inline-block;
+            }
+            &:nth-child(1) {
+                &:after {
+                    @include sprite($diamond-1);
+                }
+            }
+            &:nth-child(2) {
+                &:after {
+                    @include sprite($diamond-2);
+                }
+            }
+            &:nth-child(3) {
+                &:after {
+                    @include sprite($diamond-3);
+                }
+            }
+        }
+    }
+}

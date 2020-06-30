@@ -1,0 +1,15 @@
+{
+  //Babel 几乎可以编译所有时新的 JavaScript 语法，
+  //但对于 APIs 来说却并非如此。
+  //例如： Promise、Set、Map 等新增对象，Object.assign、Object.entries等静态方法，
+  //babel-plugin-transform-runtime为了达成使用这些新API。
+  "presets": ["@babel/preset-env"],
+  "plugins": [
+    [
+      "@babel/plugin-transform-runtime",
+      {
+        "corejs": 3
+      }
+    ]
+  ]
+}

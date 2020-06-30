@@ -1,0 +1,27 @@
+.sprites{background:url(../images/logImgs/sprites.png) no-repeat ;}
+.arrow-right{height:30px;width:14px;background-position:0 -256px;}
+.back-icon{height:40px;width:19px;background-position:0 -184px;}
+.checked-icon{height:32px;width:32px;background-position:-112px -256px;}
+.check-icon{height:32px;width:32px;background-position:-48px -256px;}
+.game-info-icon{height:31px;width:32px;background-position:-191px -392px;}
+.notice-icon{height:40px;width:40px;background-position:-48px -184px;}
+.notice-icon-active{height:40px;width:40px;background-position:-112px -184px;}
+.nav-close-icon{height:30px;width:40px;background-position:-183px -256px;}
+.eye-icon{height:30px;width:40px;background-position:0 -320px;}
+.eye-close-icon{height:40px;width:40px;background-position:-63px -320px;}
+.pwd-icon{height:40px;width:40px;background-position:-183px -320px;}
+.user-icon{height:40px;width:40px;background-position:-120px -320px;}
+.logout-icon{height:40px;width:41px;background-position:-182px -184px;}
+.center-f03{height:40px;width:47px;background-position:-175px -543px;}
+.center-f01{height:60px;width:47px;background-position:-175px -632px;}
+.bind-icon01{height:50px;width:50px;background-position:0 -543px;}
+.personal-icon{height:50px;width:50px;background-position:-88px -384px;}
+.bind-icon02{height:50px;width:50px;background-position:0 -464px;}
+.bind-icon03{height:50px;width:50px;background-position:-88px -464px;}
+.bind-icon04{height:50px;width:50px;background-position:-172px -464px;}
+.bind-icon05{height:50px;width:50px;background-position:-88px -543px;}
+.center-f02{height:60px;width:57px;background-position:0 -632px;}
+.center-f04{height:60px;width:60px;background-position:0 -383px;}
+.center-f05{height:60px;width:60px;background-position:-80px -632px;}
+.fb-icon{height:65px;width:225px;background-position:0 -88px;}
+.gg-icon{height:65px;width:230px;background-position:0 0;}

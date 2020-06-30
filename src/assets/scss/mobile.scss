@@ -1,0 +1,46 @@
+html {
+    min-width: 320px;
+    max-width: 1024px;
+    margin: 0 auto;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -webkit-overflow-scrolling: touch;
+}
+
+html, body {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+@media screen and (min-width: 1200px){
+    html,
+    body {
+        font-size: 50px!important
+    }
+}
+
+@mixin wh($width, $height) {
+    @if $width==100% {
+        width: 100%;
+    }
+    @else {
+        width: toRem($width);
+    }
+    height: toRem($height);
+}
+
+@mixin background($url, $px:'', $py:'', $sw:'', $sh:'') {
+    @if $px != '' {
+        background-position: (- toRem($px)) (- toRem($py));
+    }
+    @else {
+        background: url($url) no-repeat center;
+    }
+    @if $sw != '' {
+        background-size: toRem($sw) toRem($sh);
+    }
+    @else {
+        background-size: cover
+    }
+}

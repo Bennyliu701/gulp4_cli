@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="format-detection" content="address=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="google-site-verification" content="fuedXEyQBPro66nLv8WgmpDAAUvUlvcwoTy7_nOiEp4" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    @@include('include/common-css.html')
+    <link rel="stylesheet" href="<!-- @echo STATIC_ROOT -->/css/index.css?v<!-- @echo RELEASE_TAG -->">
+</head>
+
+<body>
+    <!-- content -->
+    <h1>test123</h1>
+    <img src="<!-- @echo STATIC_ROOT -->/images/test.jpg?v<!-- @echo RELEASE_TAG -->" alt="">
+    @@include('include/common-js.html')
+    <script type="text/javascript" src="<!-- @echo STATIC_ROOT -->/js/index.js?v<!-- @echo RELEASE_TAG -->"></script>
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+{
+  "dependencies": {
+    "@babel/runtime": "^7.10.3",
+    "cross-env": "^7.0.2",
+    "gulp": "^4.0.2",
+    "gulp-clean": "^0.4.0",
+    "gulp-connect": "^5.7.0",
+    "gulp-file-include": "^2.0.1",
+    "gulp-jshint": "^2.1.0",
+    "gulp-less": "^4.0.1",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-minify-html": "^1.0.6",
+    "gulp-rename": "^1.4.0",
+    "http-proxy-middleware": "^0.19.1",
+    "http-server": "^0.12.3",
+    "jshint": "^2.10.2",
+    "json-server": "^0.16.1",
+    "jsonfile": "^5.0.0",
+    "mockjs": "^1.1.0"
+  },
+  "scripts": {
+    "dev": "cross-env NODE_ENV=dev gulp dev",
+    "prv": "cross-env NODE_ENV=prv gulp prv",
+    "build": "cross-env NODE_ENV=prod gulp build",
+    "sprite": "cross-env NODE_ENV=dev gulp sprite",
+    "mock": "cross-env NODE_ENV=dev gulp mock"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.10.2",
+    "@babel/plugin-transform-runtime": "^7.10.1",
+    "@babel/preset-env": "^7.10.2",
+    "chalk": "^4.0.0",
+    "core-js": "^3.6.5",
+    "gulp-autoprefixer": "^6.1.0",
+    "gulp-babel": "^8.0.0",
+    "gulp-cache": "^1.1.3",
+    "gulp-concat": "^2.6.1",
+    "gulp-if": "^3.0.0",
+    "gulp-imagemin": "^6.2.0",
+    "gulp-nodemon": "^2.5.0",
+    "gulp-preprocess": "^3.0.3",
+    "gulp-sass": "^4.1.0",
+    "gulp-sass-import": "^1.0.0",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-uglify": "^3.0.2",
+    "gulp.spritesmith": "^6.11.0",
+    "imagemin-pngquant": "^8.0.0",
+    "ora": "^4.0.4",
+    "regenerator-runtime": "^0.13.5"
+  }
+}

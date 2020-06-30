@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    @@include('include/common-css.html')
+    <link rel="stylesheet" href="<!-- @echo STATIC_ROOT -->/css/example.css?v<!-- @echo RELEASE_TAG -->">
+</head>
+<body>
+    
+    <div class="example-content">
+        <h1>title</h1>
+        <section>
+            <ul>
+                <li>
+                    <p>item1</p>
+                </li>
+                <li>
+                    <p>item2</p>
+                </li>
+                <li>
+                    <p>item3</p>
+                </li>
+            </ul>
+        </section>
+    </div>
+
+    @@include('include/common-js.html')
+    <script type="text/javascript" src="<!-- @echo STATIC_ROOT -->/js/example.js?v<!-- @echo RELEASE_TAG -->"></script>
+</body>
+</html>
