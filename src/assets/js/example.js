@@ -7,15 +7,15 @@ var loginUrl = JSON.parse('/* @echo EXTEND */').LOGIN_ROOT;
 
 /* 获取config变量方式2 */
 // @if NODE_ENV = 'dev'
-this.Env = 'qa'
+let Env = 'qa'
 // @endif
 // @if NODE_ENV = 'prv'
-this.Env = 'prv'
+let Env = 'prv'
 // @endif
 // @if NODE_ENV = 'prod'
-this.Env = ''
+let Env = ''
 // @endif
-// expect  this.Env = 'qa'
+// expect  Env = 'qa'
 
 /* ES6 test */
 const a = 1;
@@ -44,3 +44,5 @@ class Circle {}
 
 /* --- Promise 物件 --- */
 const promise = Promise.resolve();
+
+

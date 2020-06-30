@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "@babel/runtime": "^7.10.3",
+    "@babel/runtime-corejs3": "^7.10.3",
     "cross-env": "^7.0.2",
     "gulp": "^4.0.2",
     "gulp-clean": "^0.4.0",
@@ -23,12 +24,15 @@
     "prv": "cross-env NODE_ENV=prv gulp prv",
     "build": "cross-env NODE_ENV=prod gulp build",
     "sprite": "cross-env NODE_ENV=dev gulp sprite",
-    "mock": "cross-env NODE_ENV=dev gulp mock"
+    "mock": "cross-env NODE_ENV=dev gulp mock",
+    "browserify": "cross-env NODE_ENV=dev gulp browserify"
   },
   "devDependencies": {
     "@babel/core": "^7.10.2",
     "@babel/plugin-transform-runtime": "^7.10.1",
     "@babel/preset-env": "^7.10.2",
+    "babelify": "^10.0.0",
+    "browserify": "^16.5.1",
     "chalk": "^4.0.0",
     "core-js": "^3.6.5",
     "gulp-autoprefixer": "^6.1.0",
@@ -43,9 +47,12 @@
     "gulp-sass-import": "^1.0.0",
     "gulp-sourcemaps": "^2.6.5",
     "gulp-uglify": "^3.0.2",
+    "gulp-uglify-es": "^2.0.0",
     "gulp.spritesmith": "^6.11.0",
     "imagemin-pngquant": "^8.0.0",
     "ora": "^4.0.4",
-    "regenerator-runtime": "^0.13.5"
+    "regenerator-runtime": "^0.13.5",
+    "vinyl-buffer": "^1.0.1",
+    "vinyl-source-stream": "^2.0.0"
   }
 }

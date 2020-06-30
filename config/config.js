@@ -15,7 +15,7 @@ module.exports = {
       HOME_ROOT: '',
       STATIC_ROOT: './dist',
       COMMON_ROOT: './dist/common',
-      EXTEND: '{"LOGIN_ROOT": "//auth-test.youzu.com", "FORGET_PWD_ROOT": "//qam.youzu.com/mobile/findpwd"'
+      EXTEND: '{"LOGIN_ROOT": "//auth-test.youzu.com", "FORGET_PWD_ROOT": "//qam.youzu.com/mobile/findpwd"}'
    },
    prv: {
       OUT_PUT: './build',
@@ -24,7 +24,7 @@ module.exports = {
       HOME_ROOT: '',
       STATIC_ROOT: 'https://qapic.youzu.com/youzu/web/mulink',
       COMMON_ROOT: 'https://qapic.youzu.com/youzu/web/mulink/common',
-      EXTEND: '{"LOGIN_ROOT": "//auth.youzu.com", "FORGET_PWD_ROOT": "//m.youzu.com/mobile/findpwd"'
+      EXTEND: '{"LOGIN_ROOT": "//auth.youzu.com", "FORGET_PWD_ROOT": "//m.youzu.com/mobile/findpwd"}'
    },
    prod: {
       OUT_PUT: './build',
@@ -33,7 +33,7 @@ module.exports = {
       HOME_ROOT: '',
       STATIC_ROOT: 'https://pic.youzu.com/youzu/web/mulink',
       COMMON_ROOT: 'https://pic.youzu.com/youzu/web/mulink/common',
-      EXTEND: '{"LOGIN_ROOT": "//auth.youzu.com", "FORGET_PWD_ROOT": "//m.youzu.com/mobile/findpwd"'
+      EXTEND: '{"LOGIN_ROOT": "//auth.youzu.com", "FORGET_PWD_ROOT": "//m.youzu.com/mobile/findpwd"}'
    },
    sprite: {
       PATH_NAME: 'example-sprite',

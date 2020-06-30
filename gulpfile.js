@@ -9,7 +9,7 @@ const Preprocess = require('gulp-preprocess') //基于自定义上下文或环�
 const FileInclude = require('gulp-file-include') // 文件模块化
 // js
 const Concat = require('gulp-concat') //连接合成文件
-const Uglify = require('gulp-uglify') //压缩js文件
+const Uglify = require('gulp-uglify-es').default; //压缩js文件
 const Jshint = require("gulp-jshint") //js检查
 const babel = require('gulp-babel') //js转译
 // less scss css 
@@ -26,6 +26,12 @@ const Pngquant = require('imagemin-pngquant') //png图片压缩插件
 const Connect = require('gulp-connect') //引入gulp-connect模块 
 const Proxy = require('http-proxy-middleware') //js代理中间件
 const nodemon = require('gulp-nodemon') //与nodemon 的功能差不多一样，用于检测启动文件
+const browserify = require('browserify')  // 插件，实际是node系
+    // 转成stream流，gulp系
+const stream = require('vinyl-source-stream')
+    // 转成二进制流，gulp系
+const buffer = require('vinyl-buffer')
+const babelify = require('babelify')
 
 const Clean = require('gulp-clean') // 清理目录
 
@@ -119,7 +125,7 @@ async function js() {
         .pipe(Preprocess({
             context: CONTEXT,
         }))
-        .pipe(babel())
+        // .pipe(babel())
         // .pipe(If(IS_PROD, Concat('main.js')))
         .pipe(If(IS_PROD, Sourcemaps.init()))
         .pipe(If(IS_PROD, Uglify()))
@@ -251,6 +257,35 @@ async function mock() {
     gulp.watch(['./mock/db.js', './mock/**'])
 }
 
+//browserify
+async function browserifyFunc() {
+     // 定义入口文件
+     return browserify({
+        // 入口必'须是转换过的es6文件，且文件不能是es6经过转换的es5文件，否者会报错
+        entries: 'dist/js/example.js',
+        debug: true
+    })
+    // 在bundle之前先转换es6，因为readabel stream 流没有transform方法
+    .transform("babelify", {
+        presets: ['@babel/preset-env'],
+        sourceMaps: false, 
+        global: true, 
+        ignore: [/\/node_modules\/(?!your module folder\/)/]
+    })
+    // 转成stream流（stream流分小片段传输）
+    .bundle()
+    .on('error', function (error) {
+        console.log(error.toString())
+    })
+    // node系只有content，添加名字转成gulp系可操作的流
+    .pipe(stream('example.js'))
+    // 转成二进制的流（二进制方式整体传输）
+    .pipe(buffer())
+    // 输出
+    // .pipe(Uglify())
+    .pipe(gulp.dest(OUT_PUT + '/js/'))
+}
+
 gulp.task('clean', clean)
 gulp.task('html', html)
 gulp.task('assets', assets)
@@ -264,14 +299,29 @@ gulp.task('images', images)
 gulp.task('server', server)
 gulp.task('sprite', sprite)
 gulp.task('mock', mock)
+gulp.task('browserifyFunc', browserifyFunc)
 
-gulp.task('sources', gulp.series(gulp.parallel('html', 'assets', 'commonJs', 'commonCss', 'js', 'less', 'scss', 'css', 'images')))
+gulp.task('sources', 
+gulp.series(
+    gulp.parallel(
+        'html', 
+        'assets', 
+        'commonJs', 
+        'commonCss', 
+        'js', 
+        'less', 
+        'scss', 
+        'css', 
+        'images', 
+        // 'browserifyFunc'
+        )))
 
 // watch
 gulp.task('watch', async () => {
     gulp.watch(SRC_LIST.html, gulp.series('html'))
     gulp.watch(SRC_LIST.common_js, gulp.series('commonJs'))
     gulp.watch(SRC_LIST.common_css, gulp.series('commonCss'))
+    // gulp.watch(SRC_LIST.js, gulp.series('js', 'browserifyFunc'))
     gulp.watch(SRC_LIST.js, gulp.series('js'))
     gulp.watch(SRC_LIST.less, gulp.series('less'))
     gulp.watch(SRC_LIST.scss, gulp.series('scss'))
