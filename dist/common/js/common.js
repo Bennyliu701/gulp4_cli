@@ -7,7 +7,7 @@
  * @LastEditTime: 2020-04-17 15:28:27
  */
 var Profile = {
-    RELEASE_TAG: '1593511524749', // 当前环境名称
+    RELEASE_TAG: '1593514736464', // 当前环境名称
     NODE_ENV: 'dev', // 当前环境名称
     BASE_API: 'https://qa', // 基础请求Api地址
     HOME_ROOT: '', // 当前环境下主页地址

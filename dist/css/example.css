@@ -310,7 +310,7 @@ img {
 .example-content h1 {
   font-size: 30px;
   color: pink;
-  background: url("../images/example/mail-bg.png?v1593511524749") no-repeat center;
+  background: url("../images/example/mail-bg.png?v1593514736464") no-repeat center;
   background-size: cover;
 }
 
@@ -329,21 +329,21 @@ img {
 }
 
 .example-content section li:nth-child(1):after {
-  background-image: url(../images/example-sprite.png?1593424119630);
+  background-image: url(../images/example-sprite.png?1593514643841);
   background-position: 0px -106px;
   width: 144px;
   height: 63px;
 }
 
 .example-content section li:nth-child(2):after {
-  background-image: url(../images/example-sprite.png?1593424119630);
+  background-image: url(../images/example-sprite.png?1593514643841);
   background-position: -146px 0px;
   width: 144px;
   height: 74px;
 }
 
 .example-content section li:nth-child(3):after {
-  background-image: url(../images/example-sprite.png?1593424119630);
+  background-image: url(../images/example-sprite.png?1593514643841);
   background-position: 0px 0px;
   width: 144px;
   height: 104px;
