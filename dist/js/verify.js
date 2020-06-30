@@ -1,17 +1,5 @@
 "use strict";
 
-var _interopRequireDefault = require("@babel/runtime-corejs3/helpers/interopRequireDefault");
-
-var _find = _interopRequireDefault(require("@babel/runtime-corejs3/core-js-stable/instance/find"));
-
-var _stringify = _interopRequireDefault(require("@babel/runtime-corejs3/core-js-stable/json/stringify"));
-
-var _indexOf = _interopRequireDefault(require("@babel/runtime-corejs3/core-js-stable/instance/index-of"));
-
-var _setTimeout2 = _interopRequireDefault(require("@babel/runtime-corejs3/core-js-stable/set-timeout"));
-
-var _setInterval2 = _interopRequireDefault(require("@babel/runtime-corejs3/core-js-stable/set-interval"));
-
 var isFirst = 0; //是否为第一次
 
 var mql = window.matchMedia("(orientation: portrait)");
@@ -49,7 +37,7 @@ function changeFontSize() {
         deviceH = $.cookie('curSize').split('-')[0];
     $('html').attr('style', 'font-size:' + curFontSize + '');
     isFirst++;
-    var timer = (0, _setInterval2["default"])(function () {
+    var timer = setInterval(function () {
       if (curFontSize != $('html').attr('style').split(':')[1]) {
         $('html').attr('style', 'font-size:' + curFontSize + '');
         $('.common-body').attr('style', 'height:' + deviceH + 'px;');
@@ -84,7 +72,7 @@ function screenListener() {
 
   ; //间隔固定事件检查是否转屏，默认500毫秒
 
-  (0, _setTimeout2["default"])("screenListener()", 500);
+  setTimeout("screenListener()", 500);
 } //屏幕方向标识，0横屏，其他值竖屏
 
 
@@ -109,8 +97,6 @@ function screenEvent() {
 
 screenListener();
 $(function () {
-  var _context16;
-
   //资源路径
   var locationUrl = location.protocol + '//' + location.host;
   /* ==================== sdk交互 ============================ */
@@ -124,7 +110,7 @@ $(function () {
 
   function isAndroid() {
     var u = navigator.userAgent;
-    return (0, _indexOf["default"])(u).call(u, 'Android') > -1 || (0, _indexOf["default"])(u).call(u, 'Adr') > -1;
+    return u.indexOf('Android') > -1 || u.indexOf('Adr') > -1;
   } //首页关闭按钮sdk交互
 
 
@@ -230,9 +216,9 @@ $(function () {
   var locationH = location.href;
   var envName = '';
 
-  if ((0, _indexOf["default"])(locationH).call(locationH, '//qa') > -1) {
+  if (locationH.indexOf('//qa') > -1) {
     envName = '//qa';
-  } else if ((0, _indexOf["default"])(locationH).call(locationH, '//prv') > -1) {
+  } else if (locationH.indexOf('//prv') > -1) {
     envName = '//prv';
   } else {
     envName = '//';
@@ -253,7 +239,7 @@ $(function () {
 
           if (data.status == 1) {
             var data1 = data.data;
-            $.cookie('userInfo', (0, _stringify["default"])(data1)); //只有gta账号
+            $.cookie('userInfo', JSON.stringify(data1)); //只有gta账号
             //只有korea账号
 
             data1.avatar ? $('#hAvatar').attr('src', 'https://upload.gtarcade.com/user_pic/' + data1.avatar) : $('#hAvatar').attr('src', 'img/user.png');
@@ -263,26 +249,22 @@ $(function () {
             Profile.getUserType(function (data) {
               if (data.status === 1) {
                 var datas = data.data;
-                $.cookie('userType', (0, _stringify["default"])(datas)); //有官方账号首页显示修改密码，没有显示设置密码
+                $.cookie('userType', JSON.stringify(datas)); //有官方账号首页显示修改密码，没有显示设置密码
 
                 /*首页重置密码，修改密码*/
 
                 if ($('.personal-center-box').length > 0) {
                   //账号登录
                   if (datas.korea || datas.gta) {
-                    var _context5, _context6;
-
-                    (0, _find["default"])(_context5 = $('#setPwd')).call(_context5, 'a').attr('href', locationUrl + '/sdk/mailPhone.html');
-                    (0, _find["default"])(_context6 = $('#setPwd')).call(_context6, 'em').html('비밀번호 수정');
+                    $('#setPwd').find('a').attr('href', locationUrl + '/sdk/mailPhone.html');
+                    $('#setPwd').find('em').html('비밀번호 수정');
                     $('.personal-center-footer').show();
                     $('#hNickname').html(datas.korea || datas.gta); //是第三方登录，去设置密码
                     //没有韩国账号-设置密码
                     //没有gta账号-设置密码
                   } else {
-                    var _context7, _context8;
-
-                    (0, _find["default"])(_context7 = $('#setPwd')).call(_context7, 'a').attr('href', locationUrl + '/sdk/setpassword.html');
-                    (0, _find["default"])(_context8 = $('#setPwd')).call(_context8, 'em').html('비밀번호 설정');
+                    $('#setPwd').find('a').attr('href', locationUrl + '/sdk/setpassword.html');
+                    $('#setPwd').find('em').html('비밀번호 설정');
                     $('.personal-center-footer').hide();
                     $('#hNickname').html(data1.username);
                   }
@@ -351,7 +333,7 @@ $(function () {
         sequence: GetQueryString("sequence")
       }; //存入cookie
 
-      $.cookie('params', (0, _stringify["default"])(params));
+      $.cookie('params', JSON.stringify(params));
     }
 
     if (!userData) {
@@ -366,7 +348,7 @@ $(function () {
         },
         success: function success(data) {
           if (data.status == 1) {
-            $.cookie('uuzu_UNICKNAME', (0, _stringify["default"])(data.data.setcookie[0].value), {
+            $.cookie('uuzu_UNICKNAME', JSON.stringify(data.data.setcookie[0].value), {
               path: '/',
               domain: '.uzgames.com'
             });
@@ -407,17 +389,13 @@ $(function () {
       if ($('.personal-center-box').length > 0) {
         //账号登录
         if (userType.korea || userType.gta) {
-          var _context, _context2;
-
-          (0, _find["default"])(_context = $('#setPwd')).call(_context, 'a').attr('href', locationUrl + '/sdk/mailPhone.html');
-          (0, _find["default"])(_context2 = $('#setPwd')).call(_context2, 'em').html('비밀번호 수정');
+          $('#setPwd').find('a').attr('href', locationUrl + '/sdk/mailPhone.html');
+          $('#setPwd').find('em').html('비밀번호 수정');
           $('.personal-center-footer').show();
           $('#hNickname').html(userType.korea || userType.gta); //是第三方登录，去设置密码
         } else {
-          var _context3, _context4;
-
-          (0, _find["default"])(_context3 = $('#setPwd')).call(_context3, 'a').attr('href', locationUrl + '/sdk/setpassword.html');
-          (0, _find["default"])(_context4 = $('#setPwd')).call(_context4, 'em').html('비밀번호 설정');
+          $('#setPwd').find('a').attr('href', locationUrl + '/sdk/setpassword.html');
+          $('#setPwd').find('em').html('비밀번호 설정');
           $('.personal-center-footer').hide();
           $('#hNickname').html(userData.username);
         }
@@ -430,35 +408,27 @@ $(function () {
 
 
   $('.common-form .inputs').focus(function () {
-    var _context9, _context10, _context11;
-
     var _this = $(this);
 
-    var err = (0, _find["default"])(_context9 = _this.parent()).call(_context9, '.error') || '';
-    err = err.length > 0 ? err : (0, _find["default"])(_context10 = _this.parent().next()).call(_context10, '.error');
+    var err = _this.parent().find('.error') || '';
+    err = err.length > 0 ? err : _this.parent().next().find('.error');
     err.hide();
 
-    if ((0, _find["default"])(_context11 = $(this).parent()).call(_context11, 'i').hasClass('get-icon')) {
-      var _context12;
-
-      (0, _find["default"])(_context12 = $(this).parent()).call(_context12, 'i').addClass('clock-click1');
+    if ($(this).parent().find('i').hasClass('get-icon')) {
+      $(this).parent().find('i').addClass('clock-click1');
     } else {
-      var _context13;
-
-      (0, _find["default"])(_context13 = $(this).parent()).call(_context13, 'i').addClass('clock-click');
+      $(this).parent().find('i').addClass('clock-click');
     }
   });
   /* 公共输入框格式校验 */
 
   $('.common-form .inputJ').blur(function () {
-    var _context14, _context15;
-
     var _this = $(this),
         _name = _this.prop('name'),
         _val = _this.val() || '',
         pwd = $('#hPwd').val() || '',
-        err = (0, _find["default"])(_context14 = _this.parent()).call(_context14, '.error') || '',
-        err = err.length > 0 ? err : (0, _find["default"])(_context15 = _this.parent().next()).call(_context15, '.error');
+        err = _this.parent().find('.error') || '',
+        err = err.length > 0 ? err : _this.parent().next().find('.error');
 
     if (!Profile.emptyCheck(_val, err)) return;
 
@@ -536,10 +506,8 @@ $(function () {
   });
   /*初始化密码强度展示*/
 
-  Profile.pwdStrongCheck($('#hPwd').val(), (0, _find["default"])(_context16 = $('.mm-level')).call(_context16, 'dl'));
+  Profile.pwdStrongCheck($('#hPwd').val(), $('.mm-level').find('dl'));
   $('#hPwd,#aPwd').on('input property', function (e) {
-    var _context17;
-
     e.stopPropagation();
 
     var _name = $(this).attr('name');
@@ -549,7 +517,7 @@ $(function () {
     switch (_name) {
       /* 密码强度校验 */
       case 'pwd':
-        Profile.pwdStrongCheck(_val, (0, _find["default"])(_context17 = $('.mm-level')).call(_context17, 'dl'));
+        Profile.pwdStrongCheck(_val, $('.mm-level').find('dl'));
         break;
 
       /* 密码注销验证 */
@@ -573,9 +541,7 @@ $(function () {
   /* 注册 */
 
   $('#hSignupBtn').click(function () {
-    var _context18;
-
-    if ((0, _indexOf["default"])(_context18 = $(this).attr('class')).call(_context18, 'sure-btn-click') == -1) return false;
+    if ($(this).attr('class').indexOf('sure-btn-click') == -1) return false;
     var commonErr = $('.common-body .error');
     var user = $('#hUser').val() || '',
         userErr = $('#hSignErr'),
@@ -623,11 +589,9 @@ $(function () {
   /* 通信商切换 */
 
   $('#hPhoneForm .type').click(function () {
-    var _context19, _context20;
-
     $("#hServerErr").hide();
-    (0, _find["default"])(_context19 = $(this)).call(_context19, 'a').addClass('checked-item');
-    (0, _find["default"])(_context20 = $(this).siblings()).call(_context20, 'a').removeClass('checked-item');
+    $(this).find('a').addClass('checked-item');
+    $(this).siblings().find('a').removeClass('checked-item');
   });
   /*同意接收短信切换*/
 
@@ -1204,39 +1168,29 @@ $(function () {
   /*判断是否为第三方登录根据用户信息，获取邮箱，手机绑定状态，默认未绑定*/
 
   if ($('.center-body').length > 0) {
-    var _context21;
-
     loading(true, '.center-body'); //认证邮箱
 
     if (!userData) return;
-    var username = (0, _indexOf["default"])(_context21 = userData.secure_email).call(_context21, '@') > -1 ? Profile.hideEmailInfo(userData.secure_email) : userData.secure_email || '미 연동'; //认证手机
+    var username = userData.secure_email.indexOf('@') > -1 ? Profile.hideEmailInfo(userData.secure_email) : userData.secure_email || '미 연동'; //认证手机
 
     var phone = userData.secure_phone ? userData.secure_phone : '미 연동';
 
     if (!userData.secure_email) {
-      var _context22, _context23;
-
-      (0, _find["default"])(_context22 = $('.set-email-detail')).call(_context22, 'a').attr('href', locationUrl + '/sdk/certificatemail.html').html('진행');
-      (0, _find["default"])(_context23 = $('.set-email-detail')).call(_context23, 'span').html('미 연동');
+      $('.set-email-detail').find('a').attr('href', locationUrl + '/sdk/certificatemail.html').html('진행');
+      $('.set-email-detail').find('span').html('미 연동');
     } else {
-      var _context24, _context25;
-
-      (0, _find["default"])(_context24 = $('.set-email-detail')).call(_context24, 'a').attr('href', locationUrl + '/sdk/unbindmail.html').html('해제');
-      (0, _find["default"])(_context25 = $('.set-email-detail')).call(_context25, 'span').html(username);
+      $('.set-email-detail').find('a').attr('href', locationUrl + '/sdk/unbindmail.html').html('해제');
+      $('.set-email-detail').find('span').html(username);
     }
 
     if (!userData.secure_phone) {
-      var _context26, _context27;
-
       //去绑定
-      (0, _find["default"])(_context26 = $('.set-phone-detail')).call(_context26, 'a').attr('href', locationUrl + '/sdk/certificatephone.html').html('진행');
-      (0, _find["default"])(_context27 = $('.set-phone-detail')).call(_context27, 'span').html('미 연동');
+      $('.set-phone-detail').find('a').attr('href', locationUrl + '/sdk/certificatephone.html').html('진행');
+      $('.set-phone-detail').find('span').html('미 연동');
     } else {
-      var _context28, _context29;
-
       //去解绑
-      (0, _find["default"])(_context28 = $('.set-phone-detail')).call(_context28, 'a').attr('href', locationUrl + '/sdk/unbindphone.html').html('해제');
-      (0, _find["default"])(_context29 = $('.set-phone-detail')).call(_context29, 'span').html(phone);
+      $('.set-phone-detail').find('a').attr('href', locationUrl + '/sdk/unbindphone.html').html('해제');
+      $('.set-phone-detail').find('span').html(phone);
     }
     /* 获取推广短信邮件状态 */
 
@@ -1374,10 +1328,8 @@ $(function () {
           var name = $(this).attr('name');
 
           if (name == 'facebook' || name == 'google') {
-            var _context30;
-
             /* 绑定 */
-            (0, _find["default"])(_context30 = $('.pop-account')).call(_context30, '.sure-btn-click').attr('name', name);
+            $('.pop-account').find('.sure-btn-click').attr('name', name);
             $('.pop-agree,.pop-mark').fadeIn(300);
           } else {
             location.href = locationUrl + '/sdk/setpassword.html';

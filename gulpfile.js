@@ -97,7 +97,7 @@ async function commonJs() {
         .pipe(Preprocess({
             context: CONTEXT,
         }))
-        // .pipe(If(IS_PROD, Uglify()))
+        .pipe(If(IS_PROD, Uglify()))
         // .pipe(If(IS_PROD, Concat('main.js')))
         .pipe(gulp.dest(OUT_PUT + '/common/js'))
         .pipe(Connect.reload())
@@ -108,9 +108,6 @@ async function commonCss() {
     return gulp.src(SRC_LIST.common_css)
         .pipe(Preprocess({
             context: CONTEXT,
-        }))
-        .pipe(autoprefixer({
-            cascade: false //  是否美化属性值 
         }))
         .pipe(gulp.dest(OUT_PUT + '/common/css'))
         .pipe(Connect.reload())
@@ -139,9 +136,6 @@ async function less() {
         .pipe(Preprocess({
             context: CONTEXT,
         }))
-        .pipe(autoprefixer({
-            cascade: false //  是否美化属性值 
-        }))
         .pipe(If(IS_PROD, MinifyCss()))
         .pipe(If(IS_PROD, Sourcemaps.write('../maps')))
         .pipe(gulp.dest(OUT_PUT + '/css'))
@@ -159,9 +153,6 @@ async function scss() {
         .pipe(Preprocess({
             context: CONTEXT,
         }))
-        .pipe(autoprefixer({
-            cascade: false //  是否美化属性值 
-        }))
         .pipe(If(IS_PROD, MinifyCss()))
         .pipe(If(IS_PROD, Sourcemaps.write('../maps')))
         .pipe(gulp.dest(OUT_PUT + '/css'))
@@ -174,9 +165,6 @@ async function css() {
         .src(SRC_LIST.css)
         .pipe(Preprocess({
             context: CONTEXT,
-        }))
-        .pipe(autoprefixer({
-            cascade: false //  是否美化属性值 
         }))
         .pipe(If(IS_PROD, MinifyCss()))
         .pipe(If(IS_PROD, Sourcemaps.write('../maps')))

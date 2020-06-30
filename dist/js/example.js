@@ -1,16 +1,12 @@
 "use strict";
 
-var _interopRequireDefault = require("@babel/runtime-corejs3/helpers/interopRequireDefault");
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _regenerator = _interopRequireDefault(require("@babel/runtime-corejs3/regenerator"));
+var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"));
 
-var _promise = _interopRequireDefault(require("@babel/runtime-corejs3/core-js-stable/promise"));
+var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
 
-var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime-corejs3/helpers/classCallCheck"));
-
-var _filter = _interopRequireDefault(require("@babel/runtime-corejs3/core-js-stable/instance/filter"));
-
-var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime-corejs3/helpers/asyncToGenerator"));
+var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/asyncToGenerator"));
 
 // 假设当前执行指令 npm run dev
 
@@ -69,7 +65,7 @@ test().then(function (res) {
 /* --- 箭頭函式、ES6 變數、ES6 陣列方法 --- */
 
 var color = [1, 2, 3, 4, 5];
-var result = (0, _filter["default"])(color).call(color, function (item) {
+var result = color.filter(function (item) {
   return item > 2;
 });
 /* --- Class 語法糖 --- */
@@ -80,4 +76,4 @@ var Circle = function Circle() {
 /* --- Promise 物件 --- */
 
 
-var promise = _promise["default"].resolve();
+var promise = Promise.resolve();

@@ -21,6 +21,9 @@ Basic Swiper Styles
 	overflow:hidden;
 	direction:ltr;
 	-webkit-backface-visibility:hidden;
+	-moz-backface-visibility:hidden;
+	-ms-backface-visibility:hidden;
+	-o-backface-visibility:hidden;
 	backface-visibility:hidden;
 	/* Fix of Webkit flickering */
 	z-index:1;
@@ -53,14 +56,23 @@ Basic Swiper Styles
 	transition-duration:0s;
 	transform:translate3d(0px,0,0);
 	transition-timing-function:ease;
+
+	-webkit-box-sizing: content-box;
+	-moz-box-sizing: content-box;
 	box-sizing: content-box;
 }
 .swiper-free-mode > .swiper-wrapper {
+	-webkit-transition-timing-function: ease-out;
+	-moz-transition-timing-function: ease-out;
+	-ms-transition-timing-function: ease-out;
+	-o-transition-timing-function: ease-out;
 	transition-timing-function: ease-out;
 	margin: 0 auto;
 }
 .swiper-slide {
 	float: left;
+	-webkit-box-sizing: content-box;
+	-moz-box-sizing: content-box;
 	box-sizing: content-box;
 }
 
