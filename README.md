@@ -317,3 +317,4 @@ async function server(done) {
 备注：
 
 1.需要支持配置项更新本地文件到静态资源仓库
+2.项目代码库地址：https://gitlab.uuzu.com/platform/frontend/handoverdocuments
